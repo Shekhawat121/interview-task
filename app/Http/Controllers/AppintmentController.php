@@ -66,7 +66,7 @@ class AppintmentController extends Controller
     {
         try {
             // dd($request->id);
-            $apppointment = DoctorAvalilablitySlot::where(['user_id' => $request->id])->get();
+            $apppointment = DoctorAvalilablitySlot::where(['user_id' => $request->id])->doesntHave('getAppontment')->get();
             return response()->json(['status' => 'succes' , 'data' => $apppointment]);
         } catch (Exception $e) {
             dd($e);
